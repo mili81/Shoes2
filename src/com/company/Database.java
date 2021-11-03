@@ -12,7 +12,7 @@ public class Database {
     static Connection conn = null;
     static Statement stmt = null;
 
-    public static void insertWithValue(int id) throws SQLException {
+    public static void insertValues() throws SQLException {
         Scanner input = new Scanner(System.in);
         System.out.println("Name:");
         String name = input.next();
@@ -24,13 +24,34 @@ public class Database {
         String brand = input.next();
 
 
-
         String sql = "INSERT INTO shoes(ID,Name,Size,Colour,Brand) VALUES (+" +
-                id + ",'" + name + "'," + size + ",'" + colour + "','" + brand + "')";
+                name + "'," + size + ",'" + colour + "','" + brand + "')";
         stmt.execute(sql);
     }
 
-        public static void main (String[]args){
 
+    public static void main(String[] args) throws SQLException {
+        try {
+            //return connection instance
+            System.out.println("Connecting to database...");
+            conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            System.out.println("Creating statement...");
+
+            //Create statement object
+            stmt = conn.createStatement();
+
+
+        } catch (SQLException sqlException) {
+            System.out.println("Error:" + sqlException.getMessage());
+
+        } finally {  //this finally block will always be performed
+            try {     //wrap with try+catch block
+                stmt.close();
+                conn.close();
+            } catch (SQLException ex) {
+            }
         }
+
+
     }
+}
