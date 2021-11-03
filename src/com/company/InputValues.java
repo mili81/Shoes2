@@ -1,7 +1,7 @@
 package com.company;
 
 import java.util.Scanner;
-
+// ALL THIS CLASS IS NOT NEEDED ANYMORE. LEFT ONLY IN CASE WE WILL USE THESE METHODS.
 public class InputValues {
     public static void main(String[] args) {
 

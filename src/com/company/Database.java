@@ -1,21 +1,28 @@
 package com.company;
 import java.sql.*;
+import java.util.Scanner;
 
 
 public class Database {
 
-    static final String DB_URL = "jdbc:mysql://localhost/store";  //here defined where database is located, need to define instead of the localhost, the server internal IP address
+    static final String DB_URL = "jdbc:mysql://localhost/Shoes";  //here defined where database is located, need to define instead of the localhost, the server internal IP address
     //Database credentials
     static final String USER = "root";
     static final String PASSWORD = "qwerty";
     static Connection conn = null;
     static Statement stmt = null;
 
-    public static void insertWithValue(int id, String name) throws SQLException {
+    public static void insertWithValue(int id) throws SQLException {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Name:");
+        String name = input.next();
+        System.out.println("Size:");
+        int size = input.nextInt();
+        System.out.println("Colour:");
+        String colour = input.next();
+        System.out.println("Brand:");
+        String brand = input.next();
 
-        String size = "com.company.InputValues.inputSize()";
-        String brand = "com.company.InputValues.inputColour();";
-        String colour = "com.company.InputValues.inputBrand()";
 
 
         String sql = "INSERT INTO shoes(ID,Name,Size,Colour,Brand) VALUES (+" +
@@ -24,8 +31,6 @@ public class Database {
     }
 
         public static void main (String[]args){
-            com.company.InputValues.inputSize() throws SQLInput;
-            com.company.InputValues.inputBrand() throws SQLInput;
-            com.company.InputValues.inputColour() throws SQLInput;
+
         }
     }
