@@ -5,10 +5,10 @@ import java.util.Scanner;
 
 public class Database {
 
-    static final String DB_URL = "jdbc:mysql://localhost/Shoes";  //here defined where database is located, need to define instead of the localhost, the server internal IP address
+    static final String DB_URL = "jdbc:mysql://localhost/company";  //here defined where database is located, need to define instead of the localhost, the server internal IP address
     //Database credentials
-    static final String USER = "root";
-    static final String PASSWORD = "qwerty";
+    static final String USER = "group1";
+    static final String PASSWORD = "password123";
     static Connection conn = null;
     static Statement stmt = null;
 
@@ -24,8 +24,8 @@ public class Database {
         String brand = input.next();
 
 
-        String sql = "INSERT INTO shoes(ID,Name,Size,Colour,Brand) VALUES (+" +
-                name + "'," + size + ",'" + colour + "','" + brand + "')";
+        String sql = "INSERT INTO Shoes(ID,Name,Size,Colour,Brand) VALUES (+" +
+               "'" + name + "'," + size + ",'" + colour + "','" + brand + "')";
         stmt.execute(sql);
     }
 
@@ -39,7 +39,7 @@ public class Database {
 
             //Create statement object
             stmt = conn.createStatement();
-
+            insertValues();
 
         } catch (SQLException sqlException) {
             System.out.println("Error:" + sqlException.getMessage());
