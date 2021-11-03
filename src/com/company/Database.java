@@ -5,10 +5,10 @@ import java.util.Scanner;
 
 public class Database {
 
-    static final String DB_URL = "jdbc:mysql://localhost/company";  //here defined where database is located, need to define instead of the localhost, the server internal IP address
-    //Database credentials
-    static final String USER = "group1";
-    static final String PASSWORD = "password123";
+    static final String DB_URL = "jdbc:mysql://group1db.ckfcq92zr1jy.eu-west-2.rds.amazonaws.com/shoes";
+
+    static final String USER = "admin";
+    static final String PASSWORD = "Shoes_1234";
     static Connection conn = null;
     static Statement stmt = null;
 
@@ -24,7 +24,7 @@ public class Database {
         String brand = input.next();
 
 
-        String sql = "INSERT INTO Shoes(ID,Name,Size,Colour,Brand) VALUES (+" +
+        String sql = "INSERT INTO Shoes(name,size,colour,brand) VALUES (+" +
                "'" + name + "'," + size + ",'" + colour + "','" + brand + "')";
         stmt.execute(sql);
     }
@@ -32,7 +32,7 @@ public class Database {
 
     public static void main(String[] args) throws SQLException {
         try {
-            //return connection instance
+
             System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
             System.out.println("Creating statement...");
@@ -44,8 +44,8 @@ public class Database {
         } catch (SQLException sqlException) {
             System.out.println("Error:" + sqlException.getMessage());
 
-        } finally {  //this finally block will always be performed
-            try {     //wrap with try+catch block
+        } finally {
+            try {
                 stmt.close();
                 conn.close();
             } catch (SQLException ex) {
