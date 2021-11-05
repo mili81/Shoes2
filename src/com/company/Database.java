@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 public class Database {
 
-    static final String DB_URL = "jdbc:mysql://group1db.ckfcq92zr1jy.eu-west-2.rds.amazonaws.com/shoes";
+        static final String DB_URL = "jdbc:mysql://group1db.ckfcq92zr1jy.eu-west-2.rds.amazonaws.com/shoes";
 
-    static final String USER = "admin";
+        //static final String USER = "admin";
 
 
     static Connection conn = null;
@@ -44,10 +44,16 @@ public class Database {
 
 
     public static void main(String[] args){
+        Scanner name = new Scanner(System.in);
+        System.out.println("Enter username:");
+        String username = name.next();
+        Scanner pass = new Scanner(System.in);
+        System.out.println("Enter password:");
+        String password = pass.next();
         try {
 
             System.out.println("Connecting to database...");
-            conn = DriverManager.getConnection(DB_URL, USER,Pass.getPassword());
+            conn = DriverManager.getConnection(DB_URL, username, password);
             System.out.println("Creating statement...");
 
             //Create statement object
