@@ -12,6 +12,7 @@ public class Database {
     static Connection conn = null;
     static Statement stmt = null;
 
+    //this will give possibility to repeat input scenario many times on users choice
     public static void repeat() throws SQLException {
         Scanner input = new Scanner(System.in);
         System.out.println("How many rows You will enter?");
